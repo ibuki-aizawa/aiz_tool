@@ -1,6 +1,7 @@
 # aiz_tool
 
 ## Password Generator
+You know why this tool is trustworthy.
 
 ```bash
 Usage: ./password_generator.py [options]
