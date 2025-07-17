@@ -15,10 +15,10 @@ def password(length: int, withSymbols: bool) -> str:
     password = ''.join(secrets.choice(alphabet) for i in range(length))
     return password
 
-def xkdc() -> str:
+def xkcd(numberOfWords: int) -> str:
     with open('/usr/share/dict/words') as f:
         words = [word.strip() for word in f]
-        password = ' '.join(secrets.choice(words) for i in range(8))
+        password = ' '.join(secrets.choice(words) for i in range(numberOfWords))
         return password
 
 def usage() -> None:
@@ -26,8 +26,8 @@ def usage() -> None:
     print('Options:')
     print('  -n, --number <number>: Generate <number> passwords (default is 10)')
     print('  -l, --length <length>: Specify the length of the password (default is 8)')
-    print('  --with-symbols: Include symbols in the password (default is False)')
-    # print('  --xkcd: Generate a password using the XKCD method (word-based)')
+    print('  -s, --with-symbols: Include symbols in the password (default is False)')
+    print('  -x, --xkcd: Generate a password using the XKCD method (word-based)')
     print('  -h, --help: Show this help message')
     print('  -v, --version: Show the version of the script')
 
@@ -46,14 +46,14 @@ if __name__ == '__main__':
         elif arg == '--version' or arg == '-v':
             print(f'password_generator.py version {version}')
             sys.exit(0)
-        elif arg == '--xkcd':
+        elif arg == '--xkcd' or arg == '-x':
             xkcd = True
         elif (arg == '-l' or arg == '--length') and (not args or not args[0].isdigit()):
             print('Error: -l option requires a numeric argument.')
             sys.exit(1)
         elif arg == '-l' or arg == '--length':
             length = int(args.pop(0))
-        elif arg == '--with-symbols':
+        elif arg == '--with-symbols' or arg == '-s':
             withSymbols = True
         elif (arg == '-n' or arg == '--number') and (not args or not args[0].isdigit()):
             print('Error: -n option requires a numeric argument.')
@@ -66,5 +66,8 @@ if __name__ == '__main__':
             sys.exit(1)
 
     for i in range(numberOfGenerations):
-        print(password(length, withSymbols))
+        if xkcd:
+            print(xkcd(length))
+        else:
+            print(password(length, withSymbols))
 
