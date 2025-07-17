@@ -3,7 +3,7 @@
 ## Password Generator
 
 ```bash
-Usage: password_generator.py [options]
+Usage: ./password_generator.py [options]
 Options:
   -n, --number <number>: Generate <number> passwords (default is 10)
   -l, --length <length>: Specify the length of the password (default is 8)

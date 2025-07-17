@@ -22,7 +22,7 @@ def xkcd(numberOfWords: int) -> str:
         return password
 
 def usage() -> None:
-    print('Usage: password_generator.py [options]')
+    print('Usage: ./password_generator.py [options]')
     print('Options:')
     print('  -n, --number <number>: Generate <number> passwords (default is 10)')
     print('  -l, --length <length>: Specify the length of the password (default is 8)')
