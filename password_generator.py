@@ -25,7 +25,7 @@ def usage() -> None:
     print('Usage: ./password_generator.py [options]')
     print('Options:')
     print('  -n, --number <number>: Generate <number> passwords (default is 10)')
-    print('  -l, --length <length>: Specify the length of the password (default is 8)')
+    print('  -l, --length <length>: Specify the length of the password (default is 16)')
     print('  -s, --with-symbols: Include symbols in the password (default is False)')
     print('  -x, --xkcd: Generate a password using the XKCD method (word-based)')
     print('  -h, --help: Show this help message')
@@ -33,7 +33,7 @@ def usage() -> None:
 
 if __name__ == '__main__':
     numberOfGenerations = 10
-    length = 8
+    length = 16
     withSymbols = False
     xkcd = False
     args = sys.argv[1:]
