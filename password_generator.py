@@ -22,7 +22,7 @@ def xkdc() -> str:
         return password
 
 def usage() -> None:
-    print('Usage: gen-password.py [options]')
+    print('Usage: password_generator.py [options]')
     print('Options:')
     print('  -n, --number <number>: Generate <number> passwords (default is 10)')
     print('  -l, --length <length>: Specify the length of the password (default is 8)')
@@ -44,7 +44,7 @@ if __name__ == '__main__':
             usage()
             sys.exit(0)
         elif arg == '--version' or arg == '-v':
-            print(f'gen-password.py version {version}')
+            print(f'password_generator.py version {version}')
             sys.exit(0)
         elif arg == '--xkcd':
             xkcd = True
