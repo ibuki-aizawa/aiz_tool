@@ -12,13 +12,13 @@ def password(length: int, withSymbols: bool) -> str:
     if withSymbols:
         alphabet += string.punctuation
 
-    password = ''.join(secrets.choice(alphabet) for i in range(length))
+    password = ''.join(secrets.choice(alphabet) for _ in range(length))
     return password
 
 def xkcd(numberOfWords: int) -> str:
     with open('/usr/share/dict/words') as f:
         words = [word.strip() for word in f]
-        password = ' '.join(secrets.choice(words) for i in range(numberOfWords))
+        password = ' '.join(secrets.choice(words) for _ in range(numberOfWords))
         return password
 
 def usage() -> None:
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     numberOfGenerations = 10
     length = 16
     withSymbols = False
-    xkcd = False
+    useXkcd = False
     args = sys.argv[1:]
 
     while args:
@@ -44,10 +44,10 @@ if __name__ == '__main__':
             usage()
             sys.exit(0)
         elif arg == '--version' or arg == '-v':
-            print(f'password_generator.py version {version}')
+            print(f'version {version}')
             sys.exit(0)
         elif arg == '--xkcd' or arg == '-x':
-            xkcd = True
+            useXkcd = True
         elif (arg == '-l' or arg == '--length') and (not args or not args[0].isdigit()):
             print('Error: -l option requires a numeric argument.')
             sys.exit(1)
@@ -66,7 +66,7 @@ if __name__ == '__main__':
             sys.exit(1)
 
     for i in range(numberOfGenerations):
-        if xkcd:
+        if useXkcd:
             print(xkcd(length))
         else:
             print(password(length, withSymbols))
